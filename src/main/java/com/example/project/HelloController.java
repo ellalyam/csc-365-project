@@ -17,14 +17,14 @@ public class HelloController {
         SQLConnection connectNow = new SQLConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String connectQuery = "SELECT team_name from Team;";
+        String connectQuery = "SELECT name from Passengers;";
 
         try{
             Statement statement = connectDB.createStatement();
             ResultSet rs = statement.executeQuery(connectQuery);
 
             while (rs.next()){
-                showuserlabel.setText(rs.getString("team_name"));
+                showuserlabel.setText(rs.getString("name"));
 
 
             }
