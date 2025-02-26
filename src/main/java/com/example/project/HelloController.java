@@ -24,7 +24,7 @@ public class HelloController {
             ResultSet rs = statement.executeQuery(connectQuery);
 
             while (rs.next()){
-                showuserlabel.setText(rs.getString("name"));
+                showuserlabel.setText(rs.getString(1));
 
 
             }
