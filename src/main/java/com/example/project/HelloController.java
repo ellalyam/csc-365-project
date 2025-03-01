@@ -12,7 +12,6 @@ public class HelloController {
     @FXML
     private Label showuserlabel;
 
-
     public void connectButton(ActionEvent event){
         SQLConnection connectNow = new SQLConnection();
         Connection connectDB = connectNow.getConnection();
