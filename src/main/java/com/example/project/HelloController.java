@@ -1,16 +1,29 @@
 package com.example.project;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ResourceBundle;
 
-public class HelloController {
+public class HelloController implements Initializable {
     @FXML
     private Label showuserlabel;
+    @FXML
+    private Label fromcitydetails;
+    @FXML
+    private Label tocitydetails;
+    @FXML
+    private Label tripdatedetails;
+    @FXML
+    private Button searchButton;
 
     public void connectButton(ActionEvent event){
         SQLConnection connectNow = new SQLConnection();
@@ -34,5 +47,25 @@ public class HelloController {
 
 
     }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
+        searchButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                DBUtils.searchTrip(actionEvent, "com/example/project/available-trips.fxml", "Available Trips", null, null, null);
+            }
+        });
+
+    }
+
+    public void showTripInfo(String fromCity, String toCity, String date){
+        fromcitydetails.setText(fromCity);
+        tocitydetails.setText(toCity);
+        tripdatedetails.setText(date);
+
+    }
+
+
 
 }
