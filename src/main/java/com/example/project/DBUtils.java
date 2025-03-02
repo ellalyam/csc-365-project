@@ -47,23 +47,29 @@ public class DBUtils {
 
     } //searchTrip
 
-    private void proceedToBooking(javafx.scene.input.MouseEvent event, String fxmlFile, String title) {
+    private void proceedToBooking(javafx.scene.input.MouseEvent event, String fxmlFile, String title, String fromCity, String toCity, String date, String time) {
         Parent root = null;
         try {
             FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
             root = loader.load();
-
             BookingController bookingController = loader.getController();
-            bookingController.setTripDetails(trip);
+            bookingController.setTripDetails(fromCity, toCity, date, time);
 
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 600, 400));
-            stage.setTitle("Booking");
-            stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        if (root != null) {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle(title);
+            stage.setScene(new Scene(root, 600, 400));
+            stage.show();
+        } else {
+            System.out.println("Failed to load FXML file.");
+        }
+
+
     } //proceedToBooking
 
 

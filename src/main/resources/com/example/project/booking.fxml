@@ -7,10 +7,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.BookingController">
    <children>
-      <Label layoutX="161.0" layoutY="56.0" prefHeight="17.0" prefWidth="181.0" text="tripdate" />
+      <Label fx:id="bookingDate" layoutX="161.0" layoutY="56.0" prefHeight="17.0" prefWidth="181.0" text="tripdate" />
       <Text layoutX="56.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="85.15771484375" />
       <Text layoutX="53.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trip Details" wrappingWidth="216.08447265625">
          <font>
@@ -21,10 +20,10 @@
       <Text layoutX="56.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To City:" wrappingWidth="85.15771484375" />
       <Text layoutX="56.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From City:" wrappingWidth="85.15771484375" />
       <Text layoutX="56.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" wrappingWidth="85.15771484375" />
-      <Label layoutX="161.0" layoutY="73.0" prefHeight="17.0" prefWidth="181.0" text="triptime" />
-      <Label layoutX="161.0" layoutY="90.0" prefHeight="17.0" prefWidth="181.0" text="tocity" />
-      <Label layoutX="161.0" layoutY="107.0" prefHeight="17.0" prefWidth="181.0" text="fromcity" />
-      <Label layoutX="161.0" layoutY="124.0" prefHeight="17.0" prefWidth="181.0" text="price" />
+      <Label fx:id="bookTime" layoutX="161.0" layoutY="73.0" prefHeight="17.0" prefWidth="181.0" text="triptime" />
+      <Label fx:id="bookTo" layoutX="161.0" layoutY="90.0" prefHeight="17.0" prefWidth="181.0" text="tocity" />
+      <Label fx:id="bookFrom" layoutX="161.0" layoutY="107.0" prefHeight="17.0" prefWidth="181.0" text="fromcity" />
+      <Label fx:id="bookPrice" layoutX="161.0" layoutY="124.0" prefHeight="17.0" prefWidth="181.0" text="price" />
       <Text layoutX="53.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Information" wrappingWidth="127.66748046875">
          <font>
             <Font size="17.0" />

@@ -39,9 +39,10 @@ public class AvailableTripsController {
     private TableColumn<ObservableList<String>, String> seatsColumn;
 
 
+    //call the proceed to booking in handler
 
 
-
+    //set up table in here
 
 
     public void showTripInfo(String fromCity, String toCity, String date){
