@@ -4,24 +4,31 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
+import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
     @FXML
     private Label showuserlabel;
     @FXML
-    private Label fromcitydetails;
+    private TextField fromField;
+
     @FXML
-    private Label tocitydetails;
+    private TextField toField;
+
     @FXML
-    private Label tripdatedetails;
+    private DatePicker dateField;
+
     @FXML
     private Button searchButton;
 
@@ -53,18 +60,26 @@ public class HelloController implements Initializable {
         searchButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBUtils.searchTrip(actionEvent, "com/example/project/available-trips.fxml", "Available Trips", null, null, null);
+                String fromCity = fromField.getText().trim();
+                String toCity = toField.getText().trim();
+                LocalDate selectedDate = dateField.getValue();
+
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                String date = selectedDate.format(formatter);
+
+                // Validate inputs before proceeding
+                if (fromCity.isEmpty() || toCity.isEmpty() || date.isEmpty()) {
+                    System.out.println("All fields must be filled out!");
+                    return;
+                }
+
+                DBUtils.searchTrip(actionEvent, "/com/example/project/available-trips.fxml", "Available Trips", fromCity, toCity, date);
             }
         });
 
     }
 
-    public void showTripInfo(String fromCity, String toCity, String date){
-        fromcitydetails.setText(fromCity);
-        tocitydetails.setText(toCity);
-        tripdatedetails.setText(date);
 
-    }
 
 
 

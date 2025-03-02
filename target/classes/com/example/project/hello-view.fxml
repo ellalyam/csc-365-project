@@ -16,7 +16,7 @@
       <Text fx:id="tolabel" layoutX="132.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To City" />
       <TextField fx:id="toField" layoutX="214.0" layoutY="133.0" />
       <Text fx:id="datelabel" layoutX="141.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
-      <DatePicker fx:id="datefield" layoutX="210.0" layoutY="187.0" />
+      <DatePicker fx:id="dateField" layoutX="210.0" layoutY="187.0" />
       <TextField fx:id="numberPassengersField" layoutX="224.0" layoutY="236.0" />
       <Text fx:id="numberPassengerslabel" layoutX="64.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Passengers" />
    </children>

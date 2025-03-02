@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -22,16 +23,20 @@ public class DBUtils {
         if (fromCity != null && toCity != null && date != null){
             try {
                 FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+
+                URL fxmlLocation = DBUtils.class.getResource(fxmlFile);
+                System.out.println("FXML Path: " + fxmlLocation);
+
+
                 root = loader.load();
-                HelloController helloController = loader.getController();
-                helloController.showTripInfo(fromCity, toCity, date);
+                AvailableTripsController availableTripsController = loader.getController();
+                availableTripsController.showTripInfo(fromCity, toCity, date);
 
 
             }catch (IOException e) {
                 e.printStackTrace();
             }
         }
-
 
 
         if (root != null) {
@@ -46,9 +51,6 @@ public class DBUtils {
 
 
     }
-
-
-
 
 
 }
