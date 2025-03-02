@@ -23,11 +23,6 @@ public class DBUtils {
         if (fromCity != null && toCity != null && date != null){
             try {
                 FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
-
-                URL fxmlLocation = DBUtils.class.getResource(fxmlFile);
-                System.out.println("FXML Path: " + fxmlLocation);
-
-
                 root = loader.load();
                 AvailableTripsController availableTripsController = loader.getController();
                 availableTripsController.showTripInfo(fromCity, toCity, date);
@@ -50,7 +45,26 @@ public class DBUtils {
 
 
 
-    }
+    } //searchTrip
+
+    private void proceedToBooking(javafx.scene.input.MouseEvent event, String fxmlFile, String title) {
+        Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+            root = loader.load();
+
+            BookingController bookingController = loader.getController();
+            bookingController.setTripDetails(trip);
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 600, 400));
+            stage.setTitle("Booking");
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } //proceedToBooking
 
 
 }

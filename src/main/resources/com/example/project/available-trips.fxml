@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.AvailableTripsController">
    <children>
-      <Text layoutX="39.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trip Details: " />
-      <Text layoutX="60.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="from" />
-      <Text layoutX="61.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
+      <Text layoutX="40.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trip Details: " />
+      <Text layoutX="59.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="from" />
+      <Text layoutX="66.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
       <Text layoutX="61.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="date" />
       <Label fx:id="fromcitydetails" layoutX="240.0" layoutY="50.0" text="from city" />
       <Label fx:id="tocitydetails" layoutX="249.0" layoutY="83.0" text="tocity" />
-      <Label fx:id="tripdatedetails" layoutX="249.0" layoutY="112.0" text="show date" />
+      <Label fx:id="tripdatedetails" layoutX="235.0" layoutY="112.0" text="show date" />
+      <TableView layoutX="38.0" layoutY="143.0" prefHeight="200.0" prefWidth="508.0">
+          <columns>
+              <TableColumn fx:id="fromColumn" prefWidth="100.0" text="From City" />
+              <TableColumn fx:id="toColumn" prefWidth="100.0" text="To City" />
+              <TableColumn fx:id="dateColumn" prefWidth="100.0" text="Date" />
+              <TableColumn fx:id="timeColumn" prefWidth="100.0" text="Time" />
+              <TableColumn fx:id="seatsColumn" prefWidth="100.0" text="Seats Available" />
+          </columns>
+      </TableView>
    </children>
 </AnchorPane>
