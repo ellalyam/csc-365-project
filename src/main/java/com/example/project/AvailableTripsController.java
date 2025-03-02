@@ -49,17 +49,14 @@ public class AvailableTripsController implements Initializable {
         timeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(3)));
         seatsColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(4)));
 
-<<<<<<< HEAD
-=======
+
         loadTrips();
     }
->>>>>>> 11437ad636ba4820069bdac97763e04a102ced09
 
     public void loadTrips(String fromCity, String toCity, String date, int numberOfPeople) {
         ObservableList<ObservableList<String>> tripsData = FXCollections.observableArrayList();
 
-<<<<<<< HEAD
-=======
+
         String query = "SELECT fromCity, toCity, date, time, (busCapacity - seatsTaken) AS seatsAvailable " +
                 "FROM Departures " +
                 "WHERE fromCity = ? AND toCity = ? AND date = ? AND (busCapacity - seatsTaken) >= ?";
