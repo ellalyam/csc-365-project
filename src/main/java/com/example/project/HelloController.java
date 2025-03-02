@@ -31,6 +31,9 @@ public class HelloController implements Initializable {
 
     @FXML
     private Button searchButton;
+    @FXML
+    private TextField numberPassengersField;
+
 
     public void connectButton(ActionEvent event){
         SQLConnection connectNow = new SQLConnection();
@@ -63,6 +66,8 @@ public class HelloController implements Initializable {
                 String fromCity = fromField.getText().trim();
                 String toCity = toField.getText().trim();
                 LocalDate selectedDate = dateField.getValue();
+                String numPassStr = numberPassengersField.getText().trim();
+                int numPass = Integer.parseInt(numPassStr);
 
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 String date = selectedDate.format(formatter);
@@ -73,7 +78,7 @@ public class HelloController implements Initializable {
                     return;
                 }
 
-                DBUtils.searchTrip(actionEvent, "/com/example/project/available-trips.fxml", "Available Trips", fromCity, toCity, date);
+                DBUtils.searchTrip(actionEvent, "/com/example/project/available-trips.fxml", "Available Trips", fromCity, toCity, date, numPass);
             }
         });
 

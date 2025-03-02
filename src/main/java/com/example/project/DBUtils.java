@@ -17,7 +17,7 @@ import java.sql.Statement;
 
 public class DBUtils {
 
-    public static void searchTrip(ActionEvent event, String fxmlFile, String title, String fromCity, String toCity, String date){
+    public static void searchTrip(ActionEvent event, String fxmlFile, String title, String fromCity, String toCity, String date, int numPassengers){
         Parent root = null;
 
         if (fromCity != null && toCity != null && date != null){
@@ -26,6 +26,7 @@ public class DBUtils {
                 root = loader.load();
                 AvailableTripsController availableTripsController = loader.getController();
                 availableTripsController.showTripInfo(fromCity, toCity, date);
+                availableTripsController.loadTrips(fromCity, toCity, date, numPassengers);
 
 
             }catch (IOException e) {

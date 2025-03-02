@@ -41,6 +41,8 @@ public class AvailableTripsController implements Initializable {
     @FXML
     private TableColumn<ObservableList<String>, String> seatsColumn;
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         fromCityColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(0)));
@@ -50,16 +52,16 @@ public class AvailableTripsController implements Initializable {
         seatsColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(4)));
 
 
-        loadTrips();
+        //loadTrips(); searchtrip will call it from hello controller
     }
 
     public void loadTrips(String fromCity, String toCity, String date, int numberOfPeople) {
         ObservableList<ObservableList<String>> tripsData = FXCollections.observableArrayList();
 
 
-        String query = "SELECT fromCity, toCity, date, time, (busCapacity - seatsTaken) AS seatsAvailable " +
+        String query = "SELECT fromCity, toCity, date, time, (capacity - seatsTaken) AS seatsAvailable " +
                 "FROM Departures " +
-                "WHERE fromCity = ? AND toCity = ? AND date = ? AND (busCapacity - seatsTaken) >= ?";
+                "WHERE fromCity = ? AND toCity = ? AND date = ? AND (capacity - seatsTaken) >= ?";
 
         try (Connection conn = SQLConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -88,8 +90,6 @@ public class AvailableTripsController implements Initializable {
             e.printStackTrace();
         }
     }
->>>>>>> 11437ad636ba4820069bdac97763e04a102ced09
-
 
     public void showTripInfo(String fromCity, String toCity, String date){
         fromcitydetails.setText(fromCity);

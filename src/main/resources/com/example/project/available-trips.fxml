@@ -15,10 +15,10 @@
       <Label fx:id="fromcitydetails" layoutX="240.0" layoutY="50.0" text="from city" />
       <Label fx:id="tocitydetails" layoutX="249.0" layoutY="83.0" text="tocity" />
       <Label fx:id="tripdatedetails" layoutX="235.0" layoutY="112.0" text="show date" />
-      <TableView layoutX="38.0" layoutY="143.0" prefHeight="200.0" prefWidth="508.0">
+      <TableView fx:id="tripsTable" layoutX="38.0" layoutY="143.0" prefHeight="200.0" prefWidth="508.0">
           <columns>
-              <TableColumn fx:id="fromColumn" prefWidth="100.0" text="From City" />
-              <TableColumn fx:id="toColumn" prefWidth="100.0" text="To City" />
+              <TableColumn fx:id="fromCityColumn" prefWidth="100.0" text="From City" />
+              <TableColumn fx:id="toCityColumn" prefWidth="100.0" text="To City" />
               <TableColumn fx:id="dateColumn" prefWidth="100.0" text="Date" />
               <TableColumn fx:id="timeColumn" prefWidth="100.0" text="Time" />
               <TableColumn fx:id="seatsColumn" prefWidth="100.0" text="Seats Available" />
