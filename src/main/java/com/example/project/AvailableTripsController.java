@@ -51,8 +51,19 @@ public class AvailableTripsController implements Initializable {
         timeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(3)));
         seatsColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(4)));
 
-
-        //loadTrips(); searchtrip will call it from hello controller
+        tripsTable.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) { // Detect double-click
+                ObservableList<String> selectedTrip = tripsTable.getSelectionModel().getSelectedItem();
+                if (selectedTrip != null) {
+                    DBUtils.proceedToBooking(event, "/com/example/project/booking.fxml", "Confirm Booking",
+                            selectedTrip.get(0), // fromCity
+                            selectedTrip.get(1), // toCity
+                            selectedTrip.get(2), // date
+                            selectedTrip.get(3), // time
+                            selectedTrip.get(4)); // price, fix this, currently showing seats
+                }
+            }
+        });
     }
 
     public void loadTrips(String fromCity, String toCity, String date, int numberOfPeople) {
@@ -70,7 +81,7 @@ public class AvailableTripsController implements Initializable {
             stmt.setString(1, fromCity);
             stmt.setString(2, toCity);
             stmt.setString(3, date);
-            stmt.setInt(4, numberOfPeople);
+            stmt.setInt(4, numberOfPeople); //also get price!
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {

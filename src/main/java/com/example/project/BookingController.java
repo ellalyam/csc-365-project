@@ -1,9 +1,13 @@
 package com.example.project;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-public class BookingController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class BookingController implements Initializable {
 
     //proceed to thank you page
     @FXML
@@ -17,14 +21,24 @@ public class BookingController {
     @FXML
     private Label bookPrice;
     @FXML
-    private Label bookDate;
+    private Label bookingDate;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
 
-    public void setTripDetails(String fromCity, String toCity, String date, String time){ //for booking page
+
+
+
+    }
+
+
+    public void setTripDetails(String fromCity, String toCity, String date, String time, String price){ //for booking page
         bookFrom.setText(fromCity);
         bookTo.setText(toCity);
-        bookDate.setText(date);
+        bookingDate.setText(date);
         bookTime.setText(time);
+        bookPrice.setText(price);
 
     }
 

@@ -73,7 +73,7 @@ public class HelloController implements Initializable {
                 String date = selectedDate.format(formatter);
 
                 // Validate inputs before proceeding
-                if (fromCity.isEmpty() || toCity.isEmpty() || date.isEmpty()) {
+                if (fromCity.isEmpty() || toCity.isEmpty() || date.isEmpty() || numPassStr.isEmpty()) {
                     System.out.println("All fields must be filled out!");
                     return;
                 }

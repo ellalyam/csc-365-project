@@ -48,13 +48,13 @@ public class DBUtils {
 
     } //searchTrip
 
-    private void proceedToBooking(javafx.scene.input.MouseEvent event, String fxmlFile, String title, String fromCity, String toCity, String date, String time) {
+    public static void proceedToBooking(javafx.scene.input.MouseEvent event, String fxmlFile, String title, String fromCity, String toCity, String date, String time, String price) {
         Parent root = null;
         try {
             FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
             root = loader.load();
             BookingController bookingController = loader.getController();
-            bookingController.setTripDetails(fromCity, toCity, date, time);
+            bookingController.setTripDetails(fromCity, toCity, date, time, price);
 
 
         } catch (IOException e) {
