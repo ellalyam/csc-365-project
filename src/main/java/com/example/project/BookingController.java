@@ -3,11 +3,17 @@ package com.example.project;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -34,6 +40,8 @@ public class BookingController implements Initializable {
     private TextField fillName;
     @FXML
     private TextField fillEmail;
+    @FXML
+    private Button previousBooking;
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -62,6 +70,25 @@ public class BookingController implements Initializable {
         bookingDate.setText(date);
         bookTime.setText(time);
         bookPrice.setText(price);
+
+    }
+
+
+    public void backButtonAvailable(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("/com/example/project/available-trips.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Available Trips");
+            stage.setScene(new Scene(root, 600, 400));
+            stage.show();
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Failed to load the back scene.");
+        }
 
     }
 

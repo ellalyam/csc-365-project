@@ -56,6 +56,7 @@ public class DBUtils {
             BookingController bookingController = loader.getController();
             bookingController.setTripDetails(fromCity, toCity, date, time, price);
 
+            //handleBackButtonClick(event,"/com/example/project/search-trip.fxml", "Find Trips!");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -98,6 +99,9 @@ public class DBUtils {
 
 
     } //proceedConfirmation
+
+
+
 
 
 }

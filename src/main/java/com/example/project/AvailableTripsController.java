@@ -6,10 +6,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,6 +49,8 @@ public class AvailableTripsController implements Initializable {
 
     @FXML
     private TableColumn<ObservableList<String>, String> priceColumn;
+    @FXML
+    private Button previousAvailable;
 
 
 
@@ -68,6 +76,9 @@ public class AvailableTripsController implements Initializable {
                 }
             }
         });
+
+
+
     }
 
     public void loadTrips(String fromCity, String toCity, String date, int numberOfPeople) {
@@ -113,6 +124,24 @@ public class AvailableTripsController implements Initializable {
         tripdatedetails.setText(date);
 
     }
+
+
+    public void backButtonSearch(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("/com/example/project/search-trip.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Find Trips!");
+            stage.setScene(new Scene(root, 600, 400));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Failed to load the back scene.");
+        }
+
+    }
+
+
 
 
 }
