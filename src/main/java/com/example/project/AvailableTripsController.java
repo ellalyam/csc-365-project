@@ -41,6 +41,9 @@ public class AvailableTripsController implements Initializable {
     @FXML
     private TableColumn<ObservableList<String>, String> seatsColumn;
 
+    @FXML
+    private TableColumn<ObservableList<String>, String> priceColumn;
+
 
 
     @Override
@@ -50,6 +53,7 @@ public class AvailableTripsController implements Initializable {
         dateColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(2)));
         timeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(3)));
         seatsColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(4)));
+        priceColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(5)));
 
         tripsTable.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) { // Detect double-click
@@ -60,7 +64,7 @@ public class AvailableTripsController implements Initializable {
                             selectedTrip.get(1), // toCity
                             selectedTrip.get(2), // date
                             selectedTrip.get(3), // time
-                            selectedTrip.get(4)); // price, fix this, currently showing seats
+                            selectedTrip.get(5)); // price, fix this, currently showing seats
                 }
             }
         });
@@ -70,7 +74,7 @@ public class AvailableTripsController implements Initializable {
         ObservableList<ObservableList<String>> tripsData = FXCollections.observableArrayList();
 
 
-        String query = "SELECT fromCity, toCity, date, time, (capacity - seatsTaken) AS seatsAvailable " +
+        String query = "SELECT fromCity, toCity, date, time, price, (capacity - seatsTaken) AS seatsAvailable " +
                 "FROM Departures " +
                 "WHERE fromCity = ? AND toCity = ? AND date = ? AND (capacity - seatsTaken) >= ?";
 
@@ -91,6 +95,7 @@ public class AvailableTripsController implements Initializable {
                     trip.add(rs.getString("date"));
                     trip.add(rs.getString("time"));
                     trip.add(rs.getString("seatsAvailable"));
+                    trip.add(rs.getString("price"));
                     tripsData.add(trip);
                 }
             }
