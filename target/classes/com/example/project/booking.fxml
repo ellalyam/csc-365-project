@@ -29,8 +29,8 @@
             <Font size="17.0" />
          </font>
       </Text>
-      <TextField layoutX="56.0" layoutY="211.0" text="Enter your name" />
-      <TextField layoutX="56.0" layoutY="250.0" text="Enter your email" />
-      <Button layoutX="236.0" layoutY="337.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="128.0" text="Confirm Booking" />
+      <TextField fx:id="fillName" layoutX="56.0" layoutY="211.0" text="Enter your name" />
+      <TextField fx:id="fillEmail" layoutX="56.0" layoutY="250.0" text="Enter your email" />
+      <Button fx:id="bookingButton" layoutX="236.0" layoutY="337.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="128.0" text="Confirm Booking" />
    </children>
 </AnchorPane>

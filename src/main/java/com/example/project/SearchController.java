@@ -17,7 +17,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable {
+public class SearchController implements Initializable {
     @FXML
     private Label showuserlabel;
     @FXML
