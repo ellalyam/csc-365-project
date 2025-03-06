@@ -23,6 +23,8 @@ public class ConfirmationController implements Initializable {
     private Label passengerName;
     @FXML
     private Button bookAnotherTrip;
+    @FXML
+    private Label rid;
 
     public void initialize(URL location, ResourceBundle resources){}
 

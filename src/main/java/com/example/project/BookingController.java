@@ -54,13 +54,18 @@ public class BookingController implements Initializable {
                 String name = fillName.getText().trim();
                 String email = fillEmail.getText().trim();
 
+                String fromCity = bookFrom.getText();
+                String toCity = bookTo.getText();
+                String date = bookingDate.getText();
+                String time = bookTime.getText();
+
                 // Validate inputs before proceeding
                 if (name.isEmpty() || email.isEmpty()) {
                     System.out.println("All fields must be filled out!");
                     return;
                 }
 
-                DBUtils.proceedToConfirmation(actionEvent, "/com/example/project/confirmation.fxml", "Thank You!", name, email); //include email for insert statement
+                DBUtils.proceedToConfirmation(actionEvent, "/com/example/project/confirmation.fxml", "Thank You!", name, email, fromCity, toCity, date, time); //include email for insert statement
             }
         });
 
@@ -94,7 +99,7 @@ public class BookingController implements Initializable {
         }
 
     }
-    private void insertReservation(String name, String email, String fromCity, String toCity, String date, String time) {
+    public static void insertReservation(String name, String email, String fromCity, String toCity, String date, String time) {
         String queryGetDid = "SELECT did FROM Departures WHERE fromCity = ? AND toCity = ? AND date = ? AND time = ?";
 
         try (Connection conn = SQLConnection.getConnection();

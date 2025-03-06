@@ -74,11 +74,11 @@ public class DBUtils {
 
     } //proceedToBooking
 
-    public static void proceedToConfirmation(ActionEvent event, String fxmlFile, String title, String name, String email) {
+    public static void proceedToConfirmation(ActionEvent event, String fxmlFile, String title, String name, String email, String fromCity, String toCity, String date, String time) {
         Parent root = null;
         try {
 
-            //BookingController.insertReservation(name, email, fromCity, toCity, date, time, price);
+            BookingController.insertReservation(name, email, fromCity, toCity, date, time);
 
             FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
             root = loader.load();
