@@ -39,37 +39,55 @@ public class BookingController implements Initializable {
     @FXML
     private Label bookingDate;
     @FXML
-    private Button bookingButton;
-    @FXML
     private TextField fillName;
     @FXML
     private TextField fillEmail;
     @FXML
+    private Button loginButton;
+    @FXML
+    private Button createAccountButton;
+    @FXML
     private Button previousBooking;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        bookingButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                String name = fillName.getText().trim();
-                String email = fillEmail.getText().trim();
+        loginButton.setOnAction(event -> {
+            String name = fillName.getText().trim();
+            String email = fillEmail.getText().trim();
 
+            if(name.isEmpty() || email.isEmpty()) {
+                System.out.println("Please enter both your name and email");
+            }
+
+            if(userExists(name, email)) {
                 String fromCity = bookFrom.getText();
                 String toCity = bookTo.getText();
                 String date = bookingDate.getText();
                 String time = bookTime.getText();
 
-                // Validate inputs before proceeding
-                if (name.isEmpty() || email.isEmpty()) {
-                    System.out.println("All fields must be filled out!");
-                    return;
-                }
-
-                DBUtils.proceedToConfirmation(actionEvent, "/com/example/project/confirmation.fxml", "Thank You!", name, email, fromCity, toCity, date, time); //include email for insert statement
+                DBUtils.proceedToConfirmation(event, "/com/example/project/confirmation.fxml", "Thank You!", name, email, fromCity, toCity, date, time); //include email for insert statement
+            } else {
+                System.out.println("Create an account");
             }
         });
 
+        createAccountButton.setOnAction(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/project/sign-up.fxml"));
+                Parent root = loader.load();
+
+                SignUpController signUpController = loader.getController();
+                signUpController.setPreviousPage("/com/example/project/booking.fxml", bookTo.getText(), bookFrom.getText(), bookingDate.getText(), bookTime.getText(), bookPrice.getText());
+
+                Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                stage.setTitle("Sign Up");
+                stage.setScene(new Scene(root, 600, 400));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
 
@@ -80,6 +98,27 @@ public class BookingController implements Initializable {
         bookTime.setText(time);
         bookPrice.setText(price);
 
+    }
+
+    // Check if user exists
+    public boolean userExists(String name, String email) {
+        String query = "SELECT COUNT(*) FROM Passengers WHERE name = ? AND email = ?";
+
+        try(Connection connect = SQLConnection.getConnection()) {
+            PreparedStatement stmt = connect.prepareStatement(query);
+            stmt.setString(1, name);
+            stmt.setString(2, email);
+
+            try(ResultSet rs = stmt.executeQuery()) {
+                if(rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 
 
@@ -100,6 +139,7 @@ public class BookingController implements Initializable {
         }
 
     }
+
     public static int insertReservation(String name, String email, String fromCity, String toCity, String date, String time) {
         String queryGetDid = "SELECT did FROM Departures WHERE fromCity = ? AND toCity = ? AND date = ? AND time = ?";
 
