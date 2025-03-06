@@ -85,7 +85,7 @@ public class DBUtils {
             root = loader.load();
 
             ConfirmationController confirmationController = loader.getController();
-            confirmationController.confirmationMessage(name, rid);
+            confirmationController.confirmationMessage(name, rid, email);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -100,6 +100,31 @@ public class DBUtils {
             System.out.println("Failed to load FXML file.");
         }
     } // proceed to confirmation
+
+    public static void viewYourTrips(ActionEvent event, String fxmlFile, String title, String name, String email) {
+        Parent root = null;
+        try {
+
+            FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+            root = loader.load();
+
+            yourTripController YTC = loader.getController();
+            YTC.showPassengerInfo(name);
+            YTC.loadYourTrips(name, email);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (root != null) {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle(title);
+            stage.setScene(new Scene(root, 600, 400));
+            stage.show();
+        } else {
+            System.out.println("Failed to load FXML file.");
+        }
+    } // proceed to your trips
 
 
 

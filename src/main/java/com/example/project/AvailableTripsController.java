@@ -66,6 +66,7 @@ public class AvailableTripsController implements Initializable {
         timeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(3)));
         seatsColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(4)));
         priceColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(5)));
+        durationColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(6)));
 
         tripsTable.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) { // Detect double-click
@@ -89,7 +90,7 @@ public class AvailableTripsController implements Initializable {
         ObservableList<ObservableList<String>> tripsData = FXCollections.observableArrayList();
 
 
-        String query = "SELECT fromCity, toCity, date, time, price, (capacity - seatsTaken) AS seatsAvailable " +
+        String query = "SELECT fromCity, toCity, date, time, price, duration, (capacity - seatsTaken) AS seatsAvailable " +
                 "FROM Departures " +
                 "WHERE fromCity = ? AND toCity = ? AND date = ? AND (capacity - seatsTaken) >= ?";
 
@@ -111,6 +112,7 @@ public class AvailableTripsController implements Initializable {
                     trip.add(rs.getString("time"));
                     trip.add(rs.getString("seatsAvailable"));
                     trip.add(rs.getString("price"));
+                    trip.add(rs.getString("duration"));
                     tripsData.add(trip);
                 }
             }

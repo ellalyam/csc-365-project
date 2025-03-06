@@ -1,6 +1,7 @@
 package com.example.project;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
@@ -25,12 +26,29 @@ public class ConfirmationController implements Initializable {
     private Button bookAnotherTrip;
     @FXML
     private Label rid;
+    @FXML
+    private Button viewTrips;
+    @FXML
+    private Label passengerEmail;
 
-    public void initialize(URL location, ResourceBundle resources){}
+    public void initialize(URL location, ResourceBundle resources){
+        viewTrips.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                String name = passengerName.getText();
+                String email = passengerEmail.getText();
 
-    public void confirmationMessage(String name, int reservationId){ //include price later
+                DBUtils.viewYourTrips(actionEvent, "/com/example/project/your-trips.fxml", "Your Trips", name, email);
+            }
+        });
+
+
+    }
+
+    public void confirmationMessage(String name, int reservationId, String email){ //include price later
         passengerName.setText(name);
         rid.setText("" + reservationId);
+        passengerEmail.setText(email);
 
     }
 

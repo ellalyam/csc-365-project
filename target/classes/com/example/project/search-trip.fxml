@@ -12,7 +12,6 @@
    <children>
       <Label fx:id="fromlabel" layoutX="124.0" layoutY="94.0" text="From City" />
       <Button fx:id="searchButton" layoutX="263.0" layoutY="297.0" mnemonicParsing="false" onAction="#connectButton" text="search" />
-      <Label fx:id="showuserlabel" layoutX="243.0" layoutY="348.0" text="show username" />
       <Text fx:id="tolabel" layoutX="132.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To City" />
       <Text fx:id="datelabel" layoutX="141.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
       <DatePicker fx:id="dateField" layoutX="210.0" layoutY="187.0" />

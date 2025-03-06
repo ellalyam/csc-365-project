@@ -29,7 +29,7 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <Label fx:id="rid" layoutX="321.0" layoutY="234.0" prefHeight="20.0" prefWidth="107.0" text="Reservation id">
+      <Label fx:id="rid" layoutX="321.0" layoutY="234.0" prefHeight="20.0" prefWidth="234.0" text="Reservation id">
          <font>
             <Font size="16.0" />
          </font>
@@ -41,5 +41,6 @@
             <Button fx:id="bookAnotherTrip" mnemonicParsing="false" onAction="#bookAnother" text="Book Another Trip" />
         </buttons>
       </ButtonBar>
+      <Label fx:id="passengerEmail" layoutX="284.0" layoutY="200.0" text="email" textFill="#fff1f1" />
    </children>
 </AnchorPane>
