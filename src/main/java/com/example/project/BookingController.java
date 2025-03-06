@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -91,5 +93,28 @@ public class BookingController implements Initializable {
         }
 
     }
+
+
+    private void insertReservation(String name, String email) {
+        String query = "INSERT INTO Reservations (name, email, fromCity, toCity, date, time, price) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = SQLConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, name);
+            stmt.setString(2, email);
+            stmt.setString(3, bookFrom.getText());
+            stmt.setString(4, bookTo.getText());
+            stmt.setString(5, bookingDate.getText());
+            stmt.setString(6, bookTime.getText());
+            stmt.setString(7, bookPrice.getText());
+
+            stmt.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
