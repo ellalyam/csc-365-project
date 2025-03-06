@@ -17,7 +17,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Label fx:id="passengerName" layoutX="164.0" layoutY="148.0" prefHeight="40.0" prefWidth="273.0" text="passenger name" textAlignment="CENTER">
+      <Label fx:id="passengerName" alignment="CENTER" layoutX="163.0" layoutY="148.0" prefHeight="40.0" prefWidth="273.0" text="passenger name" AnchorPane.rightAnchor="164.0">
          <font>
             <Font size="33.0" />
          </font>
