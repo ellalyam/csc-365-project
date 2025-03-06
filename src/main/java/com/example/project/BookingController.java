@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -93,22 +94,33 @@ public class BookingController implements Initializable {
         }
 
     }
-
-    public void insertReservation(String name, String email) {
-        String query = "INSERT INTO Reservations (name, email, fromCity, toCity, date, time, price) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private void insertReservation(String name, String email, String fromCity, String toCity, String date, String time) {
+        String queryGetDid = "SELECT did FROM Departures WHERE fromCity = ? AND toCity = ? AND date = ? AND time = ?";
 
         try (Connection conn = SQLConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
+             PreparedStatement stmtGetDid = conn.prepareStatement(queryGetDid)) {
 
-            stmt.setString(1, name);
-            stmt.setString(2, email);
-            stmt.setString(3, bookFrom.getText());
-            stmt.setString(4, bookTo.getText());
-            stmt.setString(5, bookingDate.getText());
-            stmt.setString(6, bookTime.getText());
-            stmt.setString(7, bookPrice.getText());
+            stmtGetDid.setString(1, fromCity);
+            stmtGetDid.setString(2, toCity);
+            stmtGetDid.setString(3, date);
+            stmtGetDid.setString(4, time);
 
-            stmt.executeUpdate();
+            try (ResultSet rs = stmtGetDid.executeQuery()) {
+                if (rs.next()) {
+                    int tripId = rs.getInt("did");
+
+                    String queryInsertReservation = "INSERT INTO Reservations (name, email, did, reserveDate) VALUES (?, ?, ?, ?)";
+
+                    try (PreparedStatement stmtInsert = conn.prepareStatement(queryInsertReservation)) {
+                        stmtInsert.setString(1, name);
+                        stmtInsert.setString(2, email);
+                        stmtInsert.setInt(3, tripId);
+                        stmtInsert.setDate(4, java.sql.Date.valueOf(LocalDate.now()));
+
+                        stmtInsert.executeUpdate();
+                    }
+                }
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
