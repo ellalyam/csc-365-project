@@ -1,10 +1,25 @@
 package com.example.project;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class BookingController implements Initializable {
@@ -22,13 +37,32 @@ public class BookingController implements Initializable {
     private Label bookPrice;
     @FXML
     private Label bookingDate;
+    @FXML
+    private Button bookingButton;
+    @FXML
+    private TextField fillName;
+    @FXML
+    private TextField fillEmail;
+    @FXML
+    private Button previousBooking;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources){
+        bookingButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                String name = fillName.getText().trim();
+                String email = fillEmail.getText().trim();
 
+                // Validate inputs before proceeding
+                if (name.isEmpty() || email.isEmpty()) {
+                    System.out.println("All fields must be filled out!");
+                    return;
+                }
 
-
-
+                DBUtils.proceedToConfirmation(actionEvent, "/com/example/project/confirmation.fxml", "Thank You!", name, email); //include email for insert statement
+            }
+        });
 
     }
 
@@ -41,5 +75,59 @@ public class BookingController implements Initializable {
         bookPrice.setText(price);
 
     }
+
+
+    public void backButtonAvailable(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("/com/example/project/available-trips.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Available Trips");
+            stage.setScene(new Scene(root, 600, 400));
+            stage.show();
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Failed to load the back scene.");
+        }
+
+    }
+    private void insertReservation(String name, String email, String fromCity, String toCity, String date, String time) {
+        String queryGetDid = "SELECT did FROM Departures WHERE fromCity = ? AND toCity = ? AND date = ? AND time = ?";
+
+        try (Connection conn = SQLConnection.getConnection();
+             PreparedStatement stmtGetDid = conn.prepareStatement(queryGetDid)) {
+
+            stmtGetDid.setString(1, fromCity);
+            stmtGetDid.setString(2, toCity);
+            stmtGetDid.setString(3, date);
+            stmtGetDid.setString(4, time);
+
+            try (ResultSet rs = stmtGetDid.executeQuery()) {
+                if (rs.next()) {
+                    int tripId = rs.getInt("did");
+
+                    String queryInsertReservation = "INSERT INTO Reservations (name, email, did, reserveDate) VALUES (?, ?, ?, ?)";
+
+                    try (PreparedStatement stmtInsert = conn.prepareStatement(queryInsertReservation)) {
+                        stmtInsert.setString(1, name);
+                        stmtInsert.setString(2, email);
+                        stmtInsert.setInt(3, tripId);
+                        stmtInsert.setDate(4, java.sql.Date.valueOf(LocalDate.now()));
+
+                        stmtInsert.executeUpdate();
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 
 }
