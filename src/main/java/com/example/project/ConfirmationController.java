@@ -30,7 +30,7 @@ public class ConfirmationController implements Initializable {
 
     public void confirmationMessage(String name, int reservationId){ //include price later
         passengerName.setText(name);
-        rid.setText("Reservation ID: " + reservationId);
+        rid.setText("" + reservationId);
 
     }
 
