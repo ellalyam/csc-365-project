@@ -50,6 +50,10 @@ public class AvailableTripsController implements Initializable {
     @FXML
     private TableColumn<ObservableList<String>, String> priceColumn;
     @FXML
+    private TableColumn<ObservableList<String>, String> durationColumn;
+    @FXML
+    private TableColumn<ObservableList<String>, String> RIDColumn; //check if integer
+    @FXML
     private Button previousAvailable;
 
 

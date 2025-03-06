@@ -59,7 +59,7 @@ public class BookingController implements Initializable {
                     return;
                 }
 
-                DBUtils.proceedToConfirmation(actionEvent, "/com/example/project/confirmation.fxml", "Thank You!", name); //include email for insert statement
+                DBUtils.proceedToConfirmation(actionEvent, "/com/example/project/confirmation.fxml", "Thank You!", name, email); //include email for insert statement
             }
         });
 
@@ -94,8 +94,7 @@ public class BookingController implements Initializable {
 
     }
 
-
-    private void insertReservation(String name, String email) {
+    public void insertReservation(String name, String email) {
         String query = "INSERT INTO Reservations (name, email, fromCity, toCity, date, time, price) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = SQLConnection.getConnection();
@@ -115,6 +114,8 @@ public class BookingController implements Initializable {
             e.printStackTrace();
         }
     }
+
+
 
 
 }

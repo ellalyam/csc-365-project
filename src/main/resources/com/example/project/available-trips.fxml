@@ -24,6 +24,8 @@
               <TableColumn fx:id="timeColumn" prefWidth="62.0" text="Time" />
               <TableColumn fx:id="seatsColumn" minWidth="0.0" prefWidth="115.0" text="Seats Available" />
               <TableColumn fx:id="priceColumn" prefWidth="100.0" text="Price" />
+              <TableColumn fx:id="durationColumn" prefWidth="100.0" text="Duration" />
+              <TableColumn fx:id="RIDColumn" prefWidth="100.0" text="RID" />
           </columns>
       </TableView>
       <Button fx:id="previousAvailable" layoutX="27.0" layoutY="361.0" mnemonicParsing="false" onAction="#backButtonSearch" text="previous" />
