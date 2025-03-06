@@ -28,8 +28,9 @@ public class ConfirmationController implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources){}
 
-    public void confirmationMessage(String name){ //include price later
+    public void confirmationMessage(String name, int reservationId){ //include price later
         passengerName.setText(name);
+        rid.setText("Reservation ID: " + reservationId);
 
     }
 

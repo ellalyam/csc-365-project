@@ -18,6 +18,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -99,7 +100,7 @@ public class BookingController implements Initializable {
         }
 
     }
-    public static void insertReservation(String name, String email, String fromCity, String toCity, String date, String time) {
+    public static int insertReservation(String name, String email, String fromCity, String toCity, String date, String time) {
         String queryGetDid = "SELECT did FROM Departures WHERE fromCity = ? AND toCity = ? AND date = ? AND time = ?";
 
         try (Connection conn = SQLConnection.getConnection();
@@ -114,15 +115,22 @@ public class BookingController implements Initializable {
                 if (rs.next()) {
                     int tripId = rs.getInt("did");
 
+                    // Insert reservation and get the generated rid
                     String queryInsertReservation = "INSERT INTO Reservations (name, email, did, reserveDate) VALUES (?, ?, ?, ?)";
 
-                    try (PreparedStatement stmtInsert = conn.prepareStatement(queryInsertReservation)) {
+                    try (PreparedStatement stmtInsert = conn.prepareStatement(queryInsertReservation, Statement.RETURN_GENERATED_KEYS)) {
                         stmtInsert.setString(1, name);
                         stmtInsert.setString(2, email);
                         stmtInsert.setInt(3, tripId);
                         stmtInsert.setDate(4, java.sql.Date.valueOf(LocalDate.now()));
 
                         stmtInsert.executeUpdate();
+
+                        try (ResultSet generatedKeys = stmtInsert.getGeneratedKeys()) {
+                            if (generatedKeys.next()) {
+                                return generatedKeys.getInt(1);
+                            }
+                        }
                     }
                 }
             }
@@ -130,7 +138,9 @@ public class BookingController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return -1; // Return -1 if the reservation failed
     }
+
 
 
 

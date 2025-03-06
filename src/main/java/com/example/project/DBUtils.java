@@ -15,6 +15,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import static com.example.project.BookingController.insertReservation;
+
 public class DBUtils {
 
     public static void searchTrip(ActionEvent event, String fxmlFile, String title, String fromCity, String toCity, String date, int numPassengers){
@@ -77,15 +79,13 @@ public class DBUtils {
     public static void proceedToConfirmation(ActionEvent event, String fxmlFile, String title, String name, String email, String fromCity, String toCity, String date, String time) {
         Parent root = null;
         try {
-
-            BookingController.insertReservation(name, email, fromCity, toCity, date, time);
+            int rid = insertReservation(name, email, fromCity, toCity, date, time);
 
             FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
             root = loader.load();
 
             ConfirmationController confirmationController = loader.getController();
-            confirmationController.confirmationMessage(name);
-
+            confirmationController.confirmationMessage(name, rid);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -99,10 +99,7 @@ public class DBUtils {
         } else {
             System.out.println("Failed to load FXML file.");
         }
-
-
-    } //proceedConfirmation
-
+    } // proceed to confirmation
 
 
 
