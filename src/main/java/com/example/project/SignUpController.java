@@ -48,7 +48,7 @@ public class SignUpController implements Initializable {
         });
     }
 
-    public void insertUser(String name, String email) {
+    public static void insertUser(String name, String email) {
         String query = "INSERT INTO Passengers(name, email) VALUES (?, ?)";
 
         try(Connection connect = SQLConnection.getConnection()) {

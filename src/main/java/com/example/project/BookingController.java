@@ -66,6 +66,11 @@ public class BookingController implements Initializable {
                 String date = bookingDate.getText();
                 String time = bookTime.getText();
 
+                UserLogin.setName(name);
+                UserLogin.setEmail(email);
+                System.out.print(UserLogin.getName());
+
+
                 DBUtils.proceedToConfirmation(event, "/com/example/project/confirmation.fxml", "Thank You!", name, email, fromCity, toCity, date, time); //include email for insert statement
             } else {
                 System.out.println("Create an account");
@@ -101,7 +106,7 @@ public class BookingController implements Initializable {
     }
 
     // Check if user exists
-    public boolean userExists(String name, String email) {
+    public static boolean userExists(String name, String email) {
         String query = "SELECT COUNT(*) FROM Passengers WHERE name = ? AND email = ?";
 
         try(Connection connect = SQLConnection.getConnection()) {

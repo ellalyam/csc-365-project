@@ -19,5 +19,6 @@
       <Text fx:id="numberPassengerslabel" layoutX="64.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Passengers" />
       <ComboBox fx:id="fromCityDropdown" layoutX="215.0" layoutY="90.0" prefWidth="150.0" />
       <ComboBox fx:id="toCityDropdown" layoutX="215.0" layoutY="133.0" prefWidth="150.0" />
+      <Button fx:id="searchViewTrips" layoutX="23.0" layoutY="361.0" mnemonicParsing="false" text="View Trips" />
    </children>
 </AnchorPane>

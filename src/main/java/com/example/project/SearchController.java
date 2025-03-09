@@ -4,10 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
@@ -36,6 +42,12 @@ public class SearchController implements Initializable {
     private ComboBox fromCityDropdown;
     @FXML
     private ComboBox toCityDropdown;
+
+    @FXML
+    private Button searchViewTrips;
+    @FXML
+    private Button searchLogin;
+
 
 
 
@@ -97,6 +109,30 @@ public class SearchController implements Initializable {
             }
         });
 
+        // ONLY PRESS AFTER LOGGED IN AT BOOKING PAGE!!
+        searchViewTrips.setOnAction(event -> {
+            try {
+                if (UserLogin.getName() != null && UserLogin.getEmail() != null) { // if user already logged in, show trips
+                    DBUtils.viewYourTrips(event, "/com/example/project/your-trips.fxml", "Your Trips", UserLogin.getName(), UserLogin.getEmail());
+                } else { // if not logged in, go to log in page
+                    FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("/com/example/project/log-in.fxml"));
+                    Parent root = loader.load(); // This line may throw IOException
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setTitle("Log In");
+                    stage.setScene(new Scene(root, 600, 400));
+                    stage.show();
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Failed to load the scene.");
+            }
+        });
+
+
+
+
+
     }
 
     public void loadDropdowns() {
@@ -154,6 +190,7 @@ public class SearchController implements Initializable {
         toCityDropdown.setItems(items1);
 
     }
+
 
 
 
