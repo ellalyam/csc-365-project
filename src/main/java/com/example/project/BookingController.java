@@ -171,6 +171,13 @@ public class BookingController implements Initializable {
 
                         stmtInsert.executeUpdate();
 
+                        String updateSeatsQuery = "UPDATE Departures SET seatsTaken = seatsTaken + 1 WHERE did = ?";
+                        try (PreparedStatement stmtUpdateSeats = conn.prepareStatement(updateSeatsQuery)) {
+                            stmtUpdateSeats.setInt(1, tripId);
+                            stmtUpdateSeats.executeUpdate();
+                        }
+
+
                         try (ResultSet generatedKeys = stmtInsert.getGeneratedKeys()) {
                             if (generatedKeys.next()) {
                                 return generatedKeys.getInt(1);
