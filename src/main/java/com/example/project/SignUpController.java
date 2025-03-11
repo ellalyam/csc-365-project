@@ -1,5 +1,6 @@
 package com.example.project;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -30,6 +31,8 @@ public class SignUpController implements Initializable {
     private String date;
     private String time;
     private String price;
+    @FXML
+    private Button signUpBack;
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -102,6 +105,21 @@ public class SignUpController implements Initializable {
         this.date = date;
         this.time = time;
         this.price = price;
+    }
+
+    public void backButtonSignUp(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("/com/example/project/log-in.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Log In");
+            stage.setScene(new Scene(root, 600, 400));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Failed to load the back scene.");
+        }
+
     }
 
 }
