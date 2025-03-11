@@ -19,5 +19,7 @@
       <Text layoutX="171.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
       <Text layoutX="181.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
       <Button fx:id="loginButton" layoutX="273.0" layoutY="277.0" mnemonicParsing="false" text="Log In" />
+      <Text layoutX="164.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="don't have an account?" />
+      <Button fx:id="loginSignUp" layoutX="320.0" layoutY="320.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Sign Up" textFill="#1d5ae8" underline="true" />
    </children>
 </AnchorPane>

@@ -20,5 +20,6 @@
       <ComboBox fx:id="fromCityDropdown" layoutX="215.0" layoutY="90.0" prefWidth="150.0" />
       <ComboBox fx:id="toCityDropdown" layoutX="215.0" layoutY="133.0" prefWidth="150.0" />
       <Button fx:id="searchViewTrips" layoutX="23.0" layoutY="361.0" mnemonicParsing="false" text="View Trips" />
+      <Button fx:id="logoutButton" layoutX="524.0" layoutY="361.0" mnemonicParsing="false" text="Log Out" />
    </children>
 </AnchorPane>

@@ -19,7 +19,7 @@ import static com.example.project.BookingController.insertReservation;
 
 public class DBUtils {
 
-    public static void searchTrip(ActionEvent event, String fxmlFile, String title, String fromCity, String toCity, String date, int numPassengers){
+    public static void searchTrip(ActionEvent event, String fxmlFile, String title, String fromCity, String toCity, String date){
         Parent root = null;
 
         if (fromCity != null && toCity != null && date != null){
@@ -28,7 +28,7 @@ public class DBUtils {
                 root = loader.load();
                 AvailableTripsController availableTripsController = loader.getController();
                 availableTripsController.showTripInfo(fromCity, toCity, date);
-                availableTripsController.loadTrips(fromCity, toCity, date, numPassengers);
+                availableTripsController.loadTrips(fromCity, toCity, date);
 
 
             }catch (IOException e) {
@@ -119,7 +119,7 @@ public class DBUtils {
         if (root != null) {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle(title);
-            stage.setScene(new Scene(root, 600, 400));
+            stage.setScene(new Scene(root, 675, 440));
             stage.show();
         } else {
             System.out.println("Failed to load FXML file.");
