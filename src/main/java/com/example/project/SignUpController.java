@@ -49,34 +49,37 @@ public class SignUpController implements Initializable {
             if (BookingController.userExists(name, email)){
                 System.out.println("Name and email taken.");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Sign Up");
+                alert.setHeaderText("Failed to Sign Up");
                 alert.setContentText("Name and email already taken.");
                 alert.show();
 
             } else{
                 insertUser(name, email);
 
+                //save user info
+                UserLogin.setName(name);
+                UserLogin.setEmail(email);
+                System.out.println("Name:" + UserLogin.getName());
+                System.out.println("Name:" + UserLogin.getEmail());
+
+
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/project/search-trip.fxml"));
+                    Parent root = loader.load();
+
+                    Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    stage.setTitle("Find Trips!");
+                    stage.setScene(new Scene(root, 600, 400));
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.out.println("Failed to load FXML file.");
+                }
+
             }
 
 
-            //save user info
-            UserLogin.setName(name);
-            UserLogin.setEmail(email);
-            System.out.println("Name:" + UserLogin.getName());
-            System.out.println("Name:" + UserLogin.getEmail());
-
-
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/project/search-trip.fxml"));
-                Parent root = loader.load();
-
-                Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                stage.setTitle("Find Trips!");
-                stage.setScene(new Scene(root, 600, 400));
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.out.println("Failed to load FXML file.");
-            }
         });
     }
 
