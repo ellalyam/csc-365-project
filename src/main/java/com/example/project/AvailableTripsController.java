@@ -86,13 +86,13 @@ public class AvailableTripsController implements Initializable {
 
     }
 
-    public void loadTrips(String fromCity, String toCity, String date, int numberOfPeople) {
+    public void loadTrips(String fromCity, String toCity, String date) {
         ObservableList<ObservableList<String>> tripsData = FXCollections.observableArrayList();
 
 
         String query = "SELECT fromCity, toCity, date, time, price, duration, (capacity - seatsTaken) AS seatsAvailable " +
                 "FROM Departures " +
-                "WHERE fromCity = ? AND toCity = ? AND date = ? AND (capacity - seatsTaken) >= ?";
+                "WHERE fromCity = ? AND toCity = ? AND date = ? AND (capacity - seatsTaken) >= 1";
 
         try (Connection conn = SQLConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -101,7 +101,7 @@ public class AvailableTripsController implements Initializable {
             stmt.setString(1, fromCity);
             stmt.setString(2, toCity);
             stmt.setString(3, date);
-            stmt.setInt(4, numberOfPeople); //also get price!
+            //stmt.setInt(4, numberOfPeople); //also get price!
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {

@@ -43,18 +43,19 @@ public class BookingController implements Initializable {
     @FXML
     private TextField fillEmail;
     @FXML
-    private Button loginButton;
-    @FXML
-    private Button createAccountButton;
+    private Button confirmBooking;
+
     @FXML
     private Button previousBooking;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        loginButton.setOnAction(event -> {
-            String name = fillName.getText().trim();
-            String email = fillEmail.getText().trim();
+        confirmBooking.setOnAction(event -> {
+            //String name = fillName.getText().trim();
+            //String email = fillEmail.getText().trim();
+            String name = UserLogin.getName();
+            String email = UserLogin.getEmail();
 
             if(name.isEmpty() || email.isEmpty()) {
                 System.out.println("Please enter both your name and email");
@@ -68,7 +69,8 @@ public class BookingController implements Initializable {
 
                 UserLogin.setName(name);
                 UserLogin.setEmail(email);
-                System.out.print(UserLogin.getName());
+                System.out.println("Name:" + UserLogin.getName());
+                System.out.println("Email:" + UserLogin.getEmail());
 
 
                 DBUtils.proceedToConfirmation(event, "/com/example/project/confirmation.fxml", "Thank You!", name, email, fromCity, toCity, date, time); //include email for insert statement
@@ -77,22 +79,6 @@ public class BookingController implements Initializable {
             }
         });
 
-        createAccountButton.setOnAction(event -> {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/project/sign-up.fxml"));
-                Parent root = loader.load();
-
-                SignUpController signUpController = loader.getController();
-                signUpController.setPreviousPage("/com/example/project/booking.fxml", bookTo.getText(), bookFrom.getText(), bookingDate.getText(), bookTime.getText(), bookPrice.getText());
-
-                Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                stage.setTitle("Sign Up");
-                stage.setScene(new Scene(root, 600, 400));
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
     }
 
 
@@ -128,6 +114,7 @@ public class BookingController implements Initializable {
 
 
     public void backButtonAvailable(ActionEvent event) {
+        /*
         try {
             FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("/com/example/project/available-trips.fxml"));
             Parent root = loader.load();
@@ -137,11 +124,14 @@ public class BookingController implements Initializable {
             stage.show();
 
 
-
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Failed to load the back scene.");
         }
+
+         */
+        DBUtils.searchTrip(event, "/com/example/project/available-trips.fxml", "Available Trips", bookFrom.getText(), bookTo.getText(), bookingDate.getText());
+
 
     }
 
