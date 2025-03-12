@@ -6,35 +6,35 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.ConfirmationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" style="-fx-font-size: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.ConfirmationController">
    <children>
-      <Text layoutX="100.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YOU'RE ALL SET," textAlignment="CENTER" wrappingWidth="401.9599609375">
+      <Text layoutX="391.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YOU'RE ALL SET," textAlignment="CENTER" wrappingWidth="401.9599609375">
          <font>
-            <Font size="33.0" />
+            <Font size="40.0" />
          </font>
       </Text>
-      <Text layoutX="178.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thanks for traveling with us!" textAlignment="CENTER" wrappingWidth="240.72509765625">
+      <Text layoutX="451.0" layoutY="521.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thanks for traveling with us!" textAlignment="CENTER" wrappingWidth="300.004638671875">
          <font>
-            <Font size="20.0" />
+            <Font size="23.0" />
          </font>
       </Text>
-      <Label fx:id="passengerName" alignment="CENTER" layoutX="164.0" layoutY="129.0" prefHeight="40.0" prefWidth="273.0" text="passenger name" AnchorPane.rightAnchor="163.0">
+      <Label fx:id="passengerName" alignment="CENTER" layoutX="458.0" layoutY="150.0" prefHeight="40.0" prefWidth="273.0" style="-fx-text-fill: lightblue;" text="passenger name" AnchorPane.rightAnchor="449.0">
          <font>
-            <Font size="33.0" />
+            <Font size="40.0" />
          </font>
       </Label>
-      <Text layoutX="221.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your booking number:" textAlignment="CENTER" wrappingWidth="159.38037109375">
+      <Text layoutX="425.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your booking number:" textAlignment="CENTER" wrappingWidth="339.0716552734375">
          <font>
-            <Font size="16.0" />
+            <Font size="27.0" />
          </font>
       </Text>
-      <Label fx:id="rid" alignment="CENTER" layoutX="184.0" layoutY="234.0" prefHeight="20.0" prefWidth="234.0" text="Reservation id" textAlignment="CENTER">
+      <Label fx:id="rid" alignment="CENTER" layoutX="481.0" layoutY="382.0" prefHeight="20.0" prefWidth="234.0" text="Reservation id" textAlignment="CENTER">
          <font>
-            <Font size="16.0" />
+            <Font size="30.0" />
          </font>
       </Label>
-      <Button fx:id="bookAnotherTrip" layoutX="313.0" layoutY="352.0" mnemonicParsing="false" onAction="#bookAnother" text="Book Another Trip" />
-    <Button fx:id="viewTrips" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="352.0" mnemonicParsing="false" text="View Your Trips" textAlignment="CENTER" />
-      <Label fx:id="passengerEmail" layoutX="284.0" layoutY="183.0" text="email" textFill="#fff1f1" />
+      <Button fx:id="bookAnotherTrip" layoutX="617.0" layoutY="571.0" mnemonicParsing="false" onAction="#bookAnother" style="-fx-background-color: lightblue;" text="Book Another Trip" textFill="WHITE" />
+    <Button fx:id="viewTrips" alignment="CENTER" contentDisplay="CENTER" layoutX="426.0" layoutY="572.0" mnemonicParsing="false" style="-fx-font-size: 20; -fx-background-color: lightblue;" text="View Your Trips" textAlignment="CENTER" textFill="WHITE" />
+      <Label fx:id="passengerEmail" layoutX="563.0" layoutY="225.0" text="email" textFill="#fff1f1" />
    </children>
 </AnchorPane>

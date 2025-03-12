@@ -18,16 +18,16 @@
       </Text>
       <TableView fx:id="yourTripsTable" layoutX="208.0" layoutY="257.0" prefHeight="356.0" prefWidth="763.0">
         <columns>
-            <TableColumn fx:id="yourRID" prefWidth="111.7279052734375" style="-fx-background-color: lightblue;" text="Reservation ID" />
-          <TableColumn fx:id="yourDate" prefWidth="104.75534057617188" style="-fx-background-color: lightblue;" text="Trip Date" />
-          <TableColumn fx:id="yourTime" prefWidth="93.41769409179688" style="-fx-background-color: lightblue;" text="Time" />
-            <TableColumn fx:id="yourFrom" prefWidth="113.082275390625" style="-fx-background-color: lightblue;" text="From" />
-            <TableColumn fx:id="yourTo" prefWidth="109.21954345703125" style="-fx-background-color: lightblue;" text="To" />
-            <TableColumn fx:id="yourDuration" prefWidth="101.24700927734375" style="-fx-background-color: lightblue;" text="Duration" />
-            <TableColumn fx:id="yourReservationDate" prefWidth="127.0" style="-fx-background-color: lightblue;" text="Reservation Date" />
+            <TableColumn fx:id="yourRID" prefWidth="111.7279052734375" text="Reservation ID" />
+          <TableColumn fx:id="yourDate" prefWidth="104.75534057617188" text="Trip Date" />
+          <TableColumn fx:id="yourTime" prefWidth="93.41769409179688" text="Time" />
+            <TableColumn fx:id="yourFrom" prefWidth="113.082275390625" text="From" />
+            <TableColumn fx:id="yourTo" prefWidth="109.21954345703125" text="To" />
+            <TableColumn fx:id="yourDuration" prefWidth="101.24700927734375" text="Duration" />
+            <TableColumn fx:id="yourReservationDate" prefWidth="127.0" text="Reservation Date" />
         </columns>
       </TableView>
-      <Label fx:id="yourName" layoutX="584.0" layoutY="208.0" text="Name" textFill="#aae5ee" underline="true">
+      <Label fx:id="yourName" layoutX="584.0" layoutY="208.0" style="-fx-text-fill: lightblue;" text="Name" textFill="#aae5ee" underline="true">
          <font>
             <Font size="17.0" />
          </font></Label>

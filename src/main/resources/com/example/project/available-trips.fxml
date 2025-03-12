@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="availablePrevious" prefHeight="820.0" prefWidth="1180.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.AvailableTripsController">
+<AnchorPane fx:id="availablePrevious" prefHeight="820.0" prefWidth="1180.0" style="-fx-font-size: 15;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.AvailableTripsController">
    <children>
       <Text layoutX="155.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trip Details: ">
          <font>
@@ -26,15 +26,15 @@
          <font>
             <Font size="24.0" />
          </font></Text>
-      <Label fx:id="fromcitydetails" layoutX="274.0" layoutY="121.0" text="from city">
+      <Label fx:id="fromcitydetails" layoutX="274.0" layoutY="121.0" style="-fx-text-fill: lightblue;" text="from city">
          <font>
             <Font size="24.0" />
          </font></Label>
-      <Label fx:id="tocitydetails" layoutX="274.0" layoutY="170.0" text="tocity">
+      <Label fx:id="tocitydetails" layoutX="274.0" layoutY="170.0" style="-fx-text-fill: lightblue;" text="tocity">
          <font>
             <Font size="24.0" />
          </font></Label>
-      <Label fx:id="tripdatedetails" layoutX="274.0" layoutY="224.0" text="show date">
+      <Label fx:id="tripdatedetails" layoutX="274.0" layoutY="224.0" style="-fx-text-fill: lightblue;" text="show date">
          <font>
             <Font size="24.0" />
          </font></Label>
@@ -42,12 +42,12 @@
           <columns>
               <TableColumn fx:id="fromCityColumn" prefWidth="174.53761291503906" text="From City" />
               <TableColumn fx:id="toCityColumn" prefWidth="161.46234130859375" text="To City" />
-              <TableColumn fx:id="dateColumn" prefWidth="89.25921630859375" text="Date" />
-              <TableColumn fx:id="timeColumn" prefWidth="107.64654541015625" text="Time" />
-              <TableColumn fx:id="seatsColumn" minWidth="0.0" prefWidth="120.47357177734375" style="-fx-background-fill: lightblue;" text="Seats Available" />
-              <TableColumn fx:id="priceColumn" prefWidth="117.454833984375" text="Price" />
-              <TableColumn fx:id="durationColumn" prefWidth="123.3193359375" text="Duration" />
-              <TableColumn fx:id="RIDColumn" prefWidth="84.879638671875" text="RID" />
+              <TableColumn fx:id="dateColumn" prefWidth="120.41281127929688" text="Date" />
+              <TableColumn fx:id="timeColumn" prefWidth="129.81396484375" text="Time" />
+              <TableColumn fx:id="seatsColumn" minWidth="0.0" prefWidth="127.94775390625" style="-fx-background-fill: lightblue;" text="Seats Available" />
+              <TableColumn fx:id="priceColumn" prefWidth="144.9796142578125" text="Price" />
+              <TableColumn fx:id="durationColumn" prefWidth="120.0" text="Duration" />
+              <TableColumn fx:id="RIDColumn" prefWidth="84.879638671875" text="RID" visible="false" />
           </columns>
       </TableView>
       <Button fx:id="previousAvailable" layoutX="50.0" layoutY="737.0" mnemonicParsing="false" onAction="#backButtonSearch" prefHeight="39.0" prefWidth="130.0" style="-fx-background-color: lightblue;" text="previous" textAlignment="CENTER" textFill="WHITE">
