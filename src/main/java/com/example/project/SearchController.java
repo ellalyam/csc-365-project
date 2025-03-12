@@ -84,7 +84,7 @@ public class SearchController implements Initializable {
         fromCityDropdown.setOnAction(event -> {
             String from = (String) fromCityDropdown.getValue();
             if (from != null) {
-                loadToCity(from);  /
+                loadToCity(from);
                 updateDatePicker();
             } else {
                 System.out.println("No city selected");
