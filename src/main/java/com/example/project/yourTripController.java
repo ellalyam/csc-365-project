@@ -215,7 +215,7 @@ public class yourTripController implements Initializable {
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Find Trips!");
-            stage.setScene(new Scene(root, 600, 400));
+            stage.setScene(new Scene(root, 1180, 820));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

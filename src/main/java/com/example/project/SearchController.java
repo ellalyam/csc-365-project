@@ -123,7 +123,7 @@ public class SearchController implements Initializable {
                     Parent root = loader.load();
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     stage.setTitle("Log In");
-                    stage.setScene(new Scene(root, 600, 400));
+                    stage.setScene(new Scene(root, 1180, 820));
                     stage.show();
                 }
 
@@ -152,7 +152,7 @@ public class SearchController implements Initializable {
                        Parent root = loader.load();
                        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                        stage.setTitle("Log In");
-                       stage.setScene(new Scene(root, 600, 400));
+                       stage.setScene(new Scene(root, 1180, 820));
                        stage.show();
                    } catch (IOException e) {
                        e.printStackTrace();

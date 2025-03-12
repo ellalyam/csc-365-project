@@ -149,7 +149,6 @@ public class BookingController implements Initializable {
                 if (rs.next()) {
                     int tripId = rs.getInt("did");
 
-                    // Insert reservation and get the generated rid
                     String queryInsertReservation = "INSERT INTO Reservations (name, email, did, reserveDate) VALUES (?, ?, ?, ?)";
 
                     try (PreparedStatement stmtInsert = conn.prepareStatement(queryInsertReservation, Statement.RETURN_GENERATED_KEYS)) {

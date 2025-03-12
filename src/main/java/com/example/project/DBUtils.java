@@ -40,7 +40,7 @@ public class DBUtils {
         if (root != null) {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle(title);
-            stage.setScene(new Scene(root, 600, 400));
+            stage.setScene(new Scene(root, 1180, 820));
             stage.show();
         } else {
             System.out.println("Failed to load FXML file.");
@@ -65,7 +65,7 @@ public class DBUtils {
         if (root != null) {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle(title);
-            stage.setScene(new Scene(root, 600, 400));
+            stage.setScene(new Scene(root, 1180, 820));
             stage.show();
         } else {
             System.out.println("Failed to load FXML file.");
@@ -92,7 +92,7 @@ public class DBUtils {
         if (root != null) {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle(title);
-            stage.setScene(new Scene(root, 600, 400));
+            stage.setScene(new Scene(root, 1180, 820));
             stage.show();
         } else {
             System.out.println("Failed to load FXML file.");
@@ -117,7 +117,7 @@ public class DBUtils {
         if (root != null) {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle(title);
-            stage.setScene(new Scene(root, 675, 440));
+            stage.setScene(new Scene(root, 1180, 820));
             stage.show();
         } else {
             System.out.println("Failed to load FXML file.");
