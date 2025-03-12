@@ -82,9 +82,9 @@ public class SearchController implements Initializable {
     public void initialize(URL location, ResourceBundle resources){
         loadDropdowns();
         fromCityDropdown.setOnAction(event -> {
-            String from = (String) fromCityDropdown.getValue();  // Get the selected city
+            String from = (String) fromCityDropdown.getValue();
             if (from != null) {
-                loadToCity(from);  // Load toCity based on the selected fromCity
+                loadToCity(from);
                 updateDatePicker();
             } else {
                 System.out.println("No city selected");
@@ -92,7 +92,7 @@ public class SearchController implements Initializable {
         });
 
         toCityDropdown.setOnAction(event -> {
-            updateDatePicker(); // Update date picker when toCity is selected
+            updateDatePicker();
         });
 
         searchButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -101,13 +101,10 @@ public class SearchController implements Initializable {
                 String fromCity = (String) fromCityDropdown.getValue();
                 String toCity = (String) toCityDropdown.getValue();
                 LocalDate selectedDate = dateField.getValue();
-                //String numPassStr = numberPassengersField.getText().trim();
-                //int numPass = Integer.parseInt(numPassStr);
 
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 String date = selectedDate.format(formatter);
 
-                // Validate inputs before proceeding
                 if (fromCity.isEmpty() || toCity.isEmpty() || date.isEmpty()) {
                     System.out.println("All fields must be filled out!");
                     return;
@@ -119,14 +116,14 @@ public class SearchController implements Initializable {
 
         searchViewTrips.setOnAction(event -> {
             try {
-                if (UserLogin.getName() != null && UserLogin.getEmail() != null) { // if user already logged in, show trips
+                if (UserLogin.getName() != null && UserLogin.getEmail() != null) {
                     DBUtils.viewYourTrips(event, "/com/example/project/your-trips.fxml", "Your Trips", UserLogin.getName(), UserLogin.getEmail());
                 } else { // if not logged in, go to log in page
                     FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("/com/example/project/log-in.fxml"));
-                    Parent root = loader.load(); // This line may throw IOException
+                    Parent root = loader.load();
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     stage.setTitle("Log In");
-                    stage.setScene(new Scene(root, 600, 400));
+                    stage.setScene(new Scene(root, 1180, 820));
                     stage.show();
                 }
 
@@ -137,35 +134,31 @@ public class SearchController implements Initializable {
         });
 
        logoutButton.setOnAction(event -> {
-           if (UserLogin.getName() != null && UserLogin.getEmail() != null) { // If user already logged in, show confirmation dialog
+           if (UserLogin.getName() != null && UserLogin.getEmail() != null) {
                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                alert.setTitle("Logout Confirmation");
                alert.setHeaderText("You are about to log out.");
                alert.setContentText("Are you sure you want to log out?");
 
-               // Show the alert and wait for the user's response
                Optional<ButtonType> result = alert.showAndWait();
 
                if (result.isPresent() && result.get() == ButtonType.OK) {
-                   // User pressed OK -> Log out the user
                    UserLogin.setName(null);
                    UserLogin.setEmail(null);
                    System.out.println("User logged out successfully.");
 
-                   // Redirect to login page
                    try {
                        FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("/com/example/project/log-in.fxml"));
                        Parent root = loader.load();
                        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                        stage.setTitle("Log In");
-                       stage.setScene(new Scene(root, 600, 400));
+                       stage.setScene(new Scene(root, 1180, 820));
                        stage.show();
                    } catch (IOException e) {
                        e.printStackTrace();
                        System.out.println("Failed to load the login scene.");
                    }
                } else {
-                   // User pressed Cancel or closed the dialog -> Do nothing
                    System.out.println("Logout canceled.");
                }
            }
@@ -208,19 +201,15 @@ public class SearchController implements Initializable {
         SQLConnection connectNow = new SQLConnection();
         Connection connectDB = connectNow.getConnection();
         ObservableList<String> items1 = FXCollections.observableArrayList();
-        String query1 = "SELECT DISTINCT toCity FROM Departures WHERE fromCity = ?"; // Correct query
+        String query1 = "SELECT DISTINCT toCity FROM Departures WHERE fromCity = ?";
 
         try {
-            // Use PreparedStatement for parameterized queries
             PreparedStatement preparedStatement = connectDB.prepareStatement(query1);
 
-            // Set the value of the fromCity parameter
-            preparedStatement.setString(1, city);  // The '1' represents the first ? in the query
+            preparedStatement.setString(1, city);
 
-            // Execute the query
-            ResultSet rs = preparedStatement.executeQuery();  // Executes the query with the city value
+            ResultSet rs = preparedStatement.executeQuery();
 
-            // Process the result set
             while (rs.next()) {
                 items1.add(rs.getString("toCity"));
             }
@@ -228,7 +217,6 @@ public class SearchController implements Initializable {
         e.printStackTrace();
     }
 
-        // Set the items to the ComboBox
         toCityDropdown.setItems(items1);
 
     }
@@ -269,11 +257,10 @@ public class SearchController implements Initializable {
                     return;
                 }
 
-                // Highlight available dates
                 if (availableDates.contains(item)) {
-                    setStyle("-fx-background-color: #90EE90;"); // Light green for available dates
+                    setStyle("-fx-background-color: #90EE90;");
                 } else {
-                    setDisable(true); // Disable unavailable dates
+                    setDisable(true);
                 }
             }
         });
@@ -287,11 +274,6 @@ public class SearchController implements Initializable {
             highlightAvailableDates(dateField, fromCity, toCity);
         }
     }
-
-
-
-
-
 
 
 }

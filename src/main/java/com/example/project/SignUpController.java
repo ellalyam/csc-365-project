@@ -57,7 +57,6 @@ public class SignUpController implements Initializable {
             } else{
                 insertUser(name, email);
 
-                //save user info
                 UserLogin.setName(name);
                 UserLogin.setEmail(email);
                 System.out.println("Name:" + UserLogin.getName());
@@ -70,7 +69,7 @@ public class SignUpController implements Initializable {
 
                     Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                     stage.setTitle("Find Trips!");
-                    stage.setScene(new Scene(root, 600, 400));
+                    stage.setScene(new Scene(root, 1180, 820));
                     stage.show();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -116,7 +115,7 @@ public class SignUpController implements Initializable {
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Log In");
-            stage.setScene(new Scene(root, 600, 400));
+            stage.setScene(new Scene(root, 1180, 820));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
