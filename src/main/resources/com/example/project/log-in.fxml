@@ -6,20 +6,35 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.LogInController">
+<AnchorPane prefHeight="820.0" prefWidth="1180.0" style="-fx-font-size: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.LogInController">
    <children>
-      <Text layoutX="245.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log In">
+      <Text layoutX="527.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log In">
          <font>
-            <Font size="43.0" />
+            <Font size="60.0" />
          </font>
       </Text>
-      <TextField fx:id="loginName" layoutX="278.0" layoutY="126.0" />
-      <TextField fx:id="loginEmail" layoutX="278.0" layoutY="200.0" />
+      <TextField fx:id="loginName" layoutX="590.0" layoutY="232.0" prefHeight="35.0" prefWidth="221.0" style="-fx-font-size: 20;" />
+      <TextField fx:id="loginEmail" layoutX="592.0" layoutY="348.0" prefHeight="35.0" prefWidth="219.0" style="-fx-font-size: 20;" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text layoutX="171.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-      <Text layoutX="181.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-      <Button fx:id="loginButton" layoutX="273.0" layoutY="277.0" mnemonicParsing="false" text="Log In" />
-      <Text layoutX="164.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="don't have an account?" />
-      <Button fx:id="loginSignUp" layoutX="320.0" layoutY="320.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Sign Up" textFill="#1d5ae8" underline="true" />
+      <Text layoutX="408.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+         <font>
+            <Font size="30.0" />
+         </font></Text>
+      <Text layoutX="412.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+         <font>
+            <Font size="30.0" />
+         </font></Text>
+      <Button fx:id="loginButton" layoutX="561.0" layoutY="437.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: lightblue;" text="Log In" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Text layoutX="370.0" layoutY="638.0" strokeType="OUTSIDE" strokeWidth="0.0" text="don't have an account?">
+         <font>
+            <Font size="25.0" />
+         </font></Text>
+      <Button fx:id="loginSignUp" layoutX="657.0" layoutY="605.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Sign Up" textFill="#1d5ae8" underline="true">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
    </children>
 </AnchorPane>

@@ -26,9 +26,9 @@
          <font>
             <Font size="24.0" />
          </font></Text>
-      <DatePicker fx:id="dateField" layoutX="463.0" layoutY="451.0" prefHeight="46.0" prefWidth="282.0" />
-      <ComboBox fx:id="fromCityDropdown" layoutX="464.0" layoutY="245.0" prefHeight="46.0" prefWidth="282.0" />
-      <ComboBox fx:id="toCityDropdown" layoutX="461.0" layoutY="341.0" prefHeight="46.0" prefWidth="282.0" />
+      <DatePicker fx:id="dateField" layoutX="463.0" layoutY="451.0" prefHeight="46.0" prefWidth="282.0" style="-fx-font-size: 20;" />
+      <ComboBox fx:id="fromCityDropdown" layoutX="464.0" layoutY="245.0" prefHeight="46.0" prefWidth="282.0" style="-fx-font-size: 20;" />
+      <ComboBox fx:id="toCityDropdown" layoutX="461.0" layoutY="341.0" prefHeight="46.0" prefWidth="282.0" style="-fx-font-size: 20;" />
       <Button fx:id="searchViewTrips" layoutX="69.0" layoutY="708.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="143.0" style="-fx-background-color: lightblue;" text="View Trips" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="24.0" />
