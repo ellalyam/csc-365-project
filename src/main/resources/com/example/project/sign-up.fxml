@@ -6,16 +6,28 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.SignUpController">
+<AnchorPane prefHeight="820.0" prefWidth="1180.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.SignUpController">
    <children>
-      <Text layoutX="112.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign Up for an Account" textAlignment="CENTER" wrappingWidth="382.23388671875">
+      <Text layoutX="377.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign Up for an Account" textAlignment="CENTER" wrappingWidth="472.73468017578125">
          <font>
-            <Font size="36.0" />
+            <Font size="48.0" />
          </font>
       </Text>
-      <TextField fx:id="nameSignUp" layoutX="220.0" layoutY="152.0" text="Name" />
-      <TextField fx:id="emailSignUp" layoutX="220.0" layoutY="194.0" text="Email" />
-      <Button fx:id="createAccountButton" layoutX="273.0" layoutY="246.0" mnemonicParsing="false" text="Sign Up" />
-      <Button fx:id="signUpBack" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#backButtonSignUp" text="back" />
+      <TextField fx:id="nameSignUp" layoutX="447.0" layoutY="300.0" prefHeight="54.0" prefWidth="320.0" text="Name">
+         <font>
+            <Font size="24.0" />
+         </font></TextField>
+      <TextField fx:id="emailSignUp" layoutX="447.0" layoutY="421.0" prefHeight="54.0" prefWidth="320.0" text="Email">
+         <font>
+            <Font size="24.0" />
+         </font></TextField>
+      <Button fx:id="createAccountButton" layoutX="503.0" layoutY="559.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="183.0" style="-fx-background-color: lightblue;" text="Sign Up" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button fx:id="signUpBack" layoutX="76.0" layoutY="743.0" mnemonicParsing="false" onAction="#backButtonSignUp" prefHeight="45.0" prefWidth="115.0" style="-fx-background-color: lightblue;" text="back" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
    </children>
 </AnchorPane>
