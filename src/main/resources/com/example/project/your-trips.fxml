@@ -9,32 +9,51 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="675.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.yourTripController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1180.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.yourTripController">
    <children>
-      <Text layoutX="137.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW YOUR PAST/UPCOMING TRIPS" wrappingWidth="407.31005859375">
+      <Text fill="#305ed3" layoutX="436.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: lightblue;" text="VIEW YOUR TRIPS" wrappingWidth="407.31005859375">
          <font>
-            <Font size="24.0" />
+            <Font size="35.0" />
          </font>
       </Text>
-      <TableView fx:id="yourTripsTable" layoutX="14.0" layoutY="99.0" prefHeight="280.0" prefWidth="653.0">
+      <TableView fx:id="yourTripsTable" layoutX="208.0" layoutY="257.0" prefHeight="356.0" prefWidth="763.0">
         <columns>
-            <TableColumn fx:id="yourRID" prefWidth="91.0" text="Reservation ID" />
-          <TableColumn fx:id="yourDate" prefWidth="99.0" text="Trip Date" />
-          <TableColumn fx:id="yourTime" prefWidth="58.0" text="Time" />
-            <TableColumn fx:id="yourFrom" prefWidth="97.0" text="From" />
-            <TableColumn fx:id="yourTo" prefWidth="92.0" text="To" />
-            <TableColumn fx:id="yourDuration" prefWidth="92.0" text="Duration" />
-            <TableColumn fx:id="yourReservationDate" prefWidth="123.0" text="Reservation Date" />
+            <TableColumn fx:id="yourRID" prefWidth="111.7279052734375" style="-fx-background-color: lightblue;" text="Reservation ID" />
+          <TableColumn fx:id="yourDate" prefWidth="104.75534057617188" style="-fx-background-color: lightblue;" text="Trip Date" />
+          <TableColumn fx:id="yourTime" prefWidth="93.41769409179688" style="-fx-background-color: lightblue;" text="Time" />
+            <TableColumn fx:id="yourFrom" prefWidth="113.082275390625" style="-fx-background-color: lightblue;" text="From" />
+            <TableColumn fx:id="yourTo" prefWidth="109.21954345703125" style="-fx-background-color: lightblue;" text="To" />
+            <TableColumn fx:id="yourDuration" prefWidth="101.24700927734375" style="-fx-background-color: lightblue;" text="Duration" />
+            <TableColumn fx:id="yourReservationDate" prefWidth="127.0" style="-fx-background-color: lightblue;" text="Reservation Date" />
         </columns>
       </TableView>
-      <Label fx:id="yourName" layoutX="338.0" layoutY="66.0" text="Name" />
-      <Text layoutX="281.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trips for " />
-      <Button fx:id="bookYour" layoutX="14.0" layoutY="392.0" mnemonicParsing="false" onAction="#bookButtonYour" text="Book Trip" />
-      <ButtonBar layoutX="188.0" layoutY="385.0" prefHeight="40.0" prefWidth="266.0">
+      <Label fx:id="yourName" layoutX="584.0" layoutY="208.0" text="Name" textFill="#aae5ee" underline="true">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <Text layoutX="514.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trips for ">
+         <font>
+            <Font size="17.0" />
+         </font></Text>
+      <Button fx:id="bookYour" layoutX="518.0" layoutY="736.0" mnemonicParsing="false" onAction="#bookButtonYour" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: lightblue;" text="Book Trip" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font></Button>
+      <ButtonBar layoutX="377.0" layoutY="651.0" prefHeight="40.0" prefWidth="418.0">
         <buttons>
-          <Button fx:id="upcomingTrips" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" text="Upcoming" />
-            <Button fx:id="previousTrips" mnemonicParsing="false" text="Previous" />
-            <Button fx:id="allTrips" mnemonicParsing="false" text="All" />
+          <Button fx:id="upcomingTrips" mnemonicParsing="false" prefHeight="33.0" prefWidth="158.0" style="-fx-border-color: lightblue;" text="Upcoming">
+               <font>
+                  <Font size="17.0" />
+               </font></Button>
+            <Button fx:id="previousTrips" mnemonicParsing="false" style="-fx-border-color: lightblue;" text="Previous">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="allTrips" mnemonicParsing="false" style="-fx-border-color: lightblue;" text="All">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
         </buttons>
       </ButtonBar>
    </children>
