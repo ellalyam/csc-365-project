@@ -52,7 +52,7 @@ public class AvailableTripsController implements Initializable {
     @FXML
     private TableColumn<ObservableList<String>, String> durationColumn;
     @FXML
-    private TableColumn<ObservableList<String>, String> RIDColumn; //check if integer
+    private TableColumn<ObservableList<String>, String> RIDColumn;
     @FXML
     private Button previousAvailable;
 
@@ -69,7 +69,7 @@ public class AvailableTripsController implements Initializable {
         durationColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(6)));
 
         tripsTable.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2) { // Detect double-click
+            if (event.getClickCount() == 2) {
                 ObservableList<String> selectedTrip = tripsTable.getSelectionModel().getSelectedItem();
                 if (selectedTrip != null) {
                     DBUtils.proceedToBooking(event, "/com/example/project/booking.fxml", "Confirm Booking",
@@ -97,11 +97,9 @@ public class AvailableTripsController implements Initializable {
         try (Connection conn = SQLConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            // Set user input values into the query
             stmt.setString(1, fromCity);
             stmt.setString(2, toCity);
             stmt.setString(3, date);
-            //stmt.setInt(4, numberOfPeople); //also get price!
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {

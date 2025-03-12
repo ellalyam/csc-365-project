@@ -52,8 +52,7 @@ public class BookingController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources){
         confirmBooking.setOnAction(event -> {
-            //String name = fillName.getText().trim();
-            //String email = fillEmail.getText().trim();
+
             String name = UserLogin.getName();
             String email = UserLogin.getEmail();
 
@@ -73,7 +72,7 @@ public class BookingController implements Initializable {
                 System.out.println("Email:" + UserLogin.getEmail());
 
 
-                DBUtils.proceedToConfirmation(event, "/com/example/project/confirmation.fxml", "Thank You!", name, email, fromCity, toCity, date, time); //include email for insert statement
+                DBUtils.proceedToConfirmation(event, "/com/example/project/confirmation.fxml", "Thank You!", name, email, fromCity, toCity, date, time);
             } else {
                 System.out.println("Create an account");
             }
@@ -82,7 +81,7 @@ public class BookingController implements Initializable {
     }
 
 
-    public void setTripDetails(String fromCity, String toCity, String date, String time, String price){ //for booking page
+    public void setTripDetails(String fromCity, String toCity, String date, String time, String price){
         bookFrom.setText(fromCity);
         bookTo.setText(toCity);
         bookingDate.setText(date);
@@ -180,7 +179,7 @@ public class BookingController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return -1; // Return -1 if the reservation failed
+        return -1;
     }
 
 

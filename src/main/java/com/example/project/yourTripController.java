@@ -125,7 +125,6 @@ public class yourTripController implements Initializable {
         try (Connection conn = SQLConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            // Set user input values into the query
             stmt.setString(1, name);
             stmt.setString(2, email);
 
@@ -170,7 +169,6 @@ public class yourTripController implements Initializable {
         try (Connection conn = SQLConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            // Set user input values into the query
             stmt.setString(1, name);
             stmt.setString(2, email);
 

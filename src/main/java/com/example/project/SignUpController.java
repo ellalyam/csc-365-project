@@ -57,7 +57,6 @@ public class SignUpController implements Initializable {
             } else{
                 insertUser(name, email);
 
-                //save user info
                 UserLogin.setName(name);
                 UserLogin.setEmail(email);
                 System.out.println("Name:" + UserLogin.getName());
